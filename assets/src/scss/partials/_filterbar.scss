@@ -1,0 +1,417 @@
+// Standardizes the toggle buttons.
+@mixin toggles($icon) {
+  background: $williams_purple;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+  height: 58px;
+  line-height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  cursor: pointer;
+  @include icon-before($icon);
+}
+
+// Standardizes the icons in the toggle buttons.
+@mixin icon-before($icon) {
+  &:before {
+    content: $icon;
+    font-family: Black Tie;
+    font-size: 14px;
+    font-weight: 900;
+    padding: 0 6px;
+    position: relative;
+    display: inline-block;
+  }
+}
+
+// Standardizes the input buttons.
+@mixin filterbar-button {
+  -webkit-appearance: button;
+  background: #666;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  padding: 13px 9px;
+  line-height: inherit;
+  height: auto;
+  font-size: 12px;
+  font-weight: 500;
+  width: 100%;
+  margin: 0;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+
+  &:hover {
+    background: #333;
+  }
+}
+
+.events-secondary-nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  clear: both;
+  width: 100%;
+  height: 70px;
+  z-index: 1020;
+  max-width: 1200px;
+  letter-spacing: 2px;
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    transform: translateX(-50%) translateY(0);
+    padding: 0;
+  }
+
+  body.admin-bar &.fixed {
+    top: 32px;
+  }
+
+  .newsletter-signup {
+    width: 100%;
+    text-align: center;
+    background: white;
+    padding: 7px;
+
+    body.tribe-filters-open &,
+    body.tribe-bar-filters-open & {
+      display: none;
+    }
+  }
+
+  #tribe-events-bar {
+    clear: none;
+    margin-bottom: 0;
+    min-width: 220px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: flex-start;
+    box-shadow: 0 4px 6px 1px rgba(0, 0, 0, .36);
+
+    body.tribe-filters-open &,
+    body.tribe-bar-filters-open & {
+      box-shadow: none;
+    }
+
+    #tribe_events_filters_wrapper {
+      flex: 1 1 100%;
+      margin: 0;
+
+      label {
+        display: none;
+        opacity: 1;
+        text-transform: uppercase;
+      }
+
+      & > #tribe_events_filter_control {
+        display: block;
+        margin: 0;
+        border-right: 1px solid $white;
+
+        // This is top toggle button
+        #tribe_events_filters_toggle {
+          &.tribe_events_filters_show_filters {
+            @include toggles("\F064"); // filter
+            &:before {
+              transform: rotate(180deg);
+            }
+          }
+
+          &.tribe_events_filters_close_filters {
+            @include toggles("\F00C"); // close
+          }
+        }
+      }
+
+      & > .tribe-events-filters-content {
+        border: none;
+
+        & > #tribe_events_filters_form {
+          .tribe_events_filter_item.tribe_last_child {
+            padding: 0;
+          }
+
+          #tribe_events_filters_reset {
+            display: none;
+          }
+        }
+
+        // This is SOOO stupid. Why are there two #tribe_events_filters_toggle
+        // on the page? Anyway, .tribe-events-filters-mobile-controls are the
+        // buttons that appear at the bottom of the filter list dropdown.
+        #tribe_events_filter_control.tribe-events-filters-mobile-controls {
+          margin: 6px;
+          display: block;
+
+          a {
+            @include filterbar-button;
+
+            &:before {
+              font-family: Black Tie;
+              font-size: 10px;
+              font-weight: 900;
+              transform: rotate(180deg);
+              padding-left: 6px;
+              position: relative;
+              display: inline-block;
+            }
+
+            // Hide this close button for consistency.
+            // Both toggles have close buttons at the top.
+            &.tribe_events_filters_close_filters {
+              display: none;
+
+              &:before {
+                content: "\F00C"; //close
+              }
+            }
+
+            // Ugh, it's so dumb that all these icons are html'd and styled differently.
+            &#tribe_events_filters_reset .tribe-reset-icon {
+              padding: 3px 5px 0 0;
+              line-height: initial;
+            }
+          }
+        }
+      }
+
+      #tribe_events_filter_item_wmscat {
+        h3.tribe-events-filters-group-heading {
+          display: none;
+        }
+
+        label,
+        &.tribe_events_filter_item.closed div {
+          display: block;
+        }
+      }
+    }
+
+    #tribe-bar-form {
+      flex: 1 1 100%;
+      background: $williams_purple;
+
+      .tribe-bar-submit {
+        margin: 6px;
+      }
+
+      input {
+        &[type="text"] {
+          background-color: #ffffff;
+          padding: 13px 9px;
+          border-radius: 3px;
+          margin: 6px;
+          border: none;
+          font-weight: 500;
+          text-transform: uppercase;
+          font-size: 12px;
+          line-height: 17px;
+          letter-spacing: 2.42px;
+
+          &::placeholder {
+            font-weight: 500;
+            text-transform: uppercase;
+            font-style: normal;
+            color: #1a1a1a;
+            font-size: 12px;
+            line-height: 17px;
+            letter-spacing: 2.42px;
+          }
+        }
+
+        &[type=submit] {
+          @include filterbar-button;
+        }
+      }
+
+      label {
+        display: none;
+      }
+
+      .tribe-bar-filters {
+        float: left;
+        margin: 0;
+        position: relative;
+        width: 100%;
+        display: none;
+
+        body.tribe-bar-filters-open & {
+          display: block;
+        }
+
+        .tribe-bar-filters-inner {
+          background-color: #eaeaea;
+
+          div {
+            display: flex;
+          }
+
+          .tribe-bar-date-filter {
+            &:before {
+              font-family: "Black Tie";
+              font-size: 19px;
+              content: "\F019";
+              color: #ffffff;
+              float: left;
+              display: none;
+            }
+          }
+        }
+      }
+
+      #tribe-bar-collapse-toggle {
+        @include toggles("\F002"); // search
+
+        &.tribe-bar-filters-open {
+          @include toggles("\F00C"); // close
+        }
+      }
+    }
+  }
+}
+
+// This section is controlled by classes added to the body via js.
+body.tribe-filters-closed {
+  .events-secondary-nav {
+    #tribe-events-bar {
+      #tribe_events_filters_wrapper {
+        & > .tribe-events-filters-content {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+body.tribe-filters-open {
+  .events-secondary-nav #tribe-events-bar #tribe-bar-form {
+    flex: 1 1 10%;
+    min-width: 55px; // keeps button wide enough for icon
+
+    #tribe-bar-collapse-toggle {
+      display: block;
+      overflow: hidden;
+
+      &:before {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  .events-secondary-nav {
+    #tribe-events-bar {
+      #tribe_events_filters_wrapper {
+        position: relative;
+      }
+    }
+  }
+}
+
+body.tribe-bar-filters-open {
+  .events-secondary-nav #tribe-events-bar {
+    #tribe_events_filters_wrapper {
+      flex: 1 1 10%;
+      min-width: 55px;
+
+      & > #tribe_events_filter_control {
+        #tribe_events_filters_toggle.tribe_events_filters_show_filters {
+          display: block;
+          overflow: hidden;
+
+          &:before {
+            width: 100%;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*********************
+MOBILE LANDSCAPE 783
+/*********************/
+@media only screen and (min-width: 767px) {
+  .events-secondary-nav {
+    /*display: flex;
+    align-items: flex-start;
+    align-content: start;*/
+    &.fixed {
+      //padding: 0 34px;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    #tribe-events-bar {
+      #tribe_events_filters_wrapper {
+        flex: 1 1 40% !important; // override body.tribe-bar-filters-open
+        & > #tribe_events_filter_control {
+          #tribe_events_filters_toggle {
+            &.tribe_events_filters_show_filters,
+            &.tribe_events_filters_close_filters {
+              height: 70px;
+            }
+          }
+        }
+      }
+
+      #tribe-bar-form {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        height: 70px;
+
+        #tribe-bar-collapse-toggle {
+          display: none !important; // override filters open.
+        }
+
+        .tribe-bar-filters {
+          // override 'display: none' in Tribe js...bad. bad. bad. \
+          // This is the worst coding job I've seen in a long time.
+          display: block !important;
+          margin-left: 1em;
+
+          .tribe-bar-filters-inner {
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+
+            > div {
+              padding: 0 9px;
+              flex: 1;
+              align-items: center;
+            }
+
+            .tribe-bar-date-filter {
+              &:before {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  body.tribe-filters-open .events-secondary-nav #tribe-events-bar #tribe-bar-form {
+    flex: 1 1 100%;
+
+    #tribe-bar-collapse-toggle {
+      display: none;
+    }
+  }
+}

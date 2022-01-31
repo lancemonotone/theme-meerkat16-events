@@ -1,0 +1,17 @@
+{% if event.integrated_parent or event.integrated_children %}
+<div class="ctd-integrated">
+    <h4 class="title">Integrated Programming</h4>
+    <ul>
+        {% if event.integrated_parent %}
+            <li>
+                <a href="{{ event.integrated_parent.url }}">{{ event.integrated_parent.title }}</a>
+            </li>
+        {% endif %}
+        {% for child in event.integrated_children %}
+            <li>
+                <a href="{{ child.url }}">{{ child.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}

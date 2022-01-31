@@ -1,0 +1,70 @@
+{# Check for skeleton mode (no outer wrappers per section) #}
+{% set not_skeleton = not fn('apply_filters', 'tribe_events_single_event_the_meta_skeleton', false, event.ID) %}
+
+{# Do we want to group venue meta separately? #}
+{% set set_venue_apart = not fn('apply_filters', 'tribe_events_single_event_the_meta_group_venue', false, event.ID) %}
+
+{% do action( 'tribe_events_single_meta_before' ) %}
+
+{% if not_skeleton %}
+<div class="tribe-events-single-section tribe-events-event-meta primary tribe-clearfix">
+
+    {% endif %}
+
+    {% do action( 'tribe_events_single_event_meta_primary_section_start' ) %}
+
+    {# Always include the main event details in this first section #}
+    {% include 'modules/meta/details.twig' with { 'event' : event } %}
+
+    {# Include venue meta if appropriate.#}
+    {% if event.venue %}
+
+        {% if not set_venue_apart and not fn('tribe_embed_google_map', event.ID) %}
+            {# If we have no map to embed and no need to keep the venue separate...#}
+            {% include 'modules/meta/venue.twig' with { 'event' : event } %}
+
+        {% elseif not set_venue_apart and not fn('tribe_has_organizer', event.ID) and fn('tribe_embed_google_map') %}
+            {# If we have no organizer, no need to separate the venue but we have a map to embed...#}
+            {% include 'modules/meta/venue.twig' with { 'event' : event } %}
+
+            <div class="tribe-events-meta-group tribe-events-meta-group-gmap">
+                {% include 'modules/meta/map.twig' with { 'event' : event } %}
+            </div>
+        {% else %}
+            {# If the venue meta has not already been displayed then it will be printed separately by default #}
+            {% set set_venue_apart = true %}
+        {% endif %}
+
+    {% endif %}
+
+    {# Include organizer meta if appropriate #}
+    {% if fn('tribe_has_organizer', event.ID) %}
+        {% include 'modules/meta/organizer.twig' with { 'event' : event } %}
+    {% endif %}
+
+    {% do action( 'tribe_events_single_event_meta_primary_section_end' ) %}
+
+    {% if not_skeleton %}
+</div>
+{% endif %}
+
+{% if set_venue_apart %}
+    {% if not_skeleton %}
+        <div class="tribe-events-single-section tribe-events-event-meta secondary tribe-clearfix">
+    {% endif %}
+
+    {% do action( 'tribe_events_single_event_meta_secondary_section_start' ) %}
+
+    {% include 'modules/meta/venue.twig' with { 'event' : event } %}
+    {% include 'modules/meta/map.twig' with { 'event' : event } %}
+
+    {% do action( 'tribe_events_single_event_meta_secondary_section_end' ) %}
+
+    {% if not_skeleton %}
+        </div>
+    {% endif %}
+{% endif %}
+
+{% if not event.do_preview %}
+    {% do action( 'tribe_events_single_meta_after' ) %}
+{% endif %}

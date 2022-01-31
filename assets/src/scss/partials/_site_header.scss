@@ -1,0 +1,230 @@
+.site-banner {
+  z-index: 20;
+}
+
+#breadcrumbs {
+  padding-top: 1rem;
+  max-width: 650px;
+  opacity: .8;
+
+  .tribe-events-filter-view & {
+    display: none;
+  }
+}
+
+body:not(.tribe-events-filter-view) .network-header {
+
+
+  &::before {
+    opacity: 0;
+  }
+
+  .menu-toggle-featherlight,
+  .wms-search .wms-navbox .wms-navbox-form .wms-icon-search {
+    text-shadow: none;
+  }
+
+  &:before {
+    background: $white;
+    background-image: none;
+  }
+
+  .wordmark {
+  
+
+    .dept-bug {
+      color: $white;
+    }
+  }
+}
+
+
+//white header with purple on home and when referred from home and TEC
+.network-header {
+  .wordmark .dept-bug {
+    text-decoration: none;
+  }
+
+  body.tribe-theme-child-meerkat16-events:not(.tribe-events-filter-view) & {
+
+  }
+}
+
+//only style the tribe pages
+.tribe-events-page-template {
+  .site-header {
+    position: relative;
+  }
+
+  .network-header {
+    // background-color: #fff;
+    // border-bottom: none;
+    // padding-bottom: 3px;
+    // background-clip: padding-box;
+
+    &:before {
+      background-position: left top, left top, left top;
+      background-repeat: no-repeat, repeat, no-repeat;
+      background-size: cover, auto, cover;
+      height: 300px;
+      width: 100%;
+      clip-path: inset(0 0 242px 0);
+      -webkit-clip-path: inset(0 0 242px 0);
+      clip: rect(0px, auto, 242px, 0px);
+    }
+
+    .btb {
+      opacity: 1;
+    }
+
+  }
+
+  .wms-search .wms-navbox .wms-navbox-form .wms-icon-search:after {
+    opacity: 1;
+  }
+}
+
+
+.events-hero {
+  /* vertically align its content */
+  display: block;
+  width: 100%;
+  margin-top: 0;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-position: 0 -60px;
+  background-color: #fff;
+  background-size: cover;
+  z-index: 110;
+  position: relative;
+  transition: none linear;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, .35), transparent 40%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='0.85' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+    /*clip-path: inset(0 0 60px 0);
+    -webkit-clip-path: inset(0 0 60px 0);
+    clip: rect(0px, auto, 240px, 0px);*/
+  }
+}
+
+/*********************
+MOBILE 320
+*********************/
+@media only screen and (min-width: $mobile_zoom) {
+
+}
+
+/*********************
+MOBILE 710
+*********************/
+@media only screen and (min-width: $mobile_portrait) {
+}
+
+/*********************
+MOBILE LANDSCAPE 783
+*********************/
+@media only screen and (min-width: $mobile_landscape) {
+  .events-hero {
+    background-position: 0 -94px;
+  }
+  .tribe-events-page-template {
+    .network-header {
+      &:before {
+        clip-path: inset(0 0 206px 0);
+        -webkit-clip-path: inset(0 0 206px 0);
+        clip: rect(0px, auto, 206px, 0px);
+      }
+    }
+  }
+}
+
+/*********************
+TABLET 910
+*********************/
+@media only screen and (min-width: $tablet) {
+  .events-hero {
+    background-position: 0 -114px;
+  }
+  .tribe-events-page-template {
+    .network-header {
+      &:before {
+        background-position: left top, left top, left top;
+        clip-path: inset(0 0 186px 0);
+        -webkit-clip-path: inset(0 0 186px 0);
+        clip: rect(0px, auto, 186px, 0px);
+      }
+    }
+  }
+}
+
+/*********************
+DESKTOP 985
+*********************/
+@media only screen and (min-width: $desktop) {
+  .events-hero {
+    background-position: 0 -94px;
+
+    &:after {
+      clip-path: none;
+      -webkit-clip-path: none;
+      clip: auto;
+    }
+  }
+  .tribe-events-page-template {
+    .network-header {
+      &:before {
+        background-position: left top, left top, left top;
+        clip-path: inset(0 0 206px 0);
+        -webkit-clip-path: inset(0 0 206px 0);
+        clip: rect(0px, auto, 206px, 0px);
+      }
+    }
+  }
+}
+
+/*********************
+LARGE 1200
+*********************/
+@media only screen and (min-width: $large) {
+  .tribe-events-page-template {
+    .network-header {
+      &:before {
+        background-position: left top, left top, left top;
+        clip-path: inset(0 0 206px 0);
+        -webkit-clip-path: inset(0 0 206px 0);
+        clip: rect(0px, auto, 206px, 0px);
+      }
+    }
+  }
+}
+
+/*********************
+MASSIVE 1450
+*********************/
+@media only screen and (min-width: 1450px) {
+  .events-hero { //very large screens, drop header down even more
+    height: 500px;
+
+    &:after {
+      clip-path: none;
+      -webkit-clip-path: none;
+      clip: auto;
+    }
+  }
+  .tribe-events-page-template {
+    .network-header {
+      &:before {
+        background-position: left top, left top, left top;
+        clip-path: inset(0 0 206px 0);
+        -webkit-clip-path: inset(0 0 206px 0);
+        clip: rect(0px, auto, 206px, 0px);
+      }
+    }
+  }
+}

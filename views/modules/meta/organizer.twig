@@ -1,0 +1,45 @@
+<div class="tribe-events-meta-group tribe-events-meta-group-organizer">
+    <h2 class="tribe-events-single-section-title">{{ event.organizers_label }}</h2>
+    <dl>
+        {% do action('tribe_events_single_meta_organizer_section_start') %}
+
+        {% for organizer in event.organizers %}
+            <dt style="display:none;"> {#This element is just to make sure we have a valid HTML#} </dt>
+            <dd class="tribe-organizer">
+                {{ organizer }}
+            </dd>
+        {% endfor %}
+
+        {# Show organizer details if there is only one #}
+
+        {% if event.organizer_phone %}
+            <dt class="tribe-organizer-tel-label">
+                {{ __( 'Phone', 'the-events-calendar' ) }}
+            </dt>
+            <dd class="tribe-organizer-tel">
+                {{ event.organizer_phone | e('html_attr') }}
+            </dd>
+        {% endif %}
+
+        {% if event.organizer_email %}
+            <dt class="tribe-organizer-email-label">
+                {{ __( 'Email', 'the-events-calendar' ) }}
+            </dt>
+            <dd class="tribe-organizer-email">
+                {{ event.organizer_email }}
+            </dd>
+        {% endif %}
+
+        {% if event.organizer_website %}
+            <dt class="tribe-organizer-url-label">
+                {{ __( 'Website', 'the-events-calendar' ) }}
+            </dt>
+            <dd class="tribe-organizer-url">
+                {{ event.organizer_website }}
+            </dd>
+        {% endif %}
+
+        {% do action( 'tribe_events_single_meta_organizer_section_end' ) %}
+
+    </dl>
+</div>

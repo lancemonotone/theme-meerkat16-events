@@ -1,0 +1,52 @@
+<div class="bodytext" style="{{ event.css.bodytext }}">
+    <a class="title" name="{{ event.hash }}" href="{{ event.event_url }}" style="{{ event.css.title }}">{{ event.title }}</a>
+    {% if event.debug and not event.do_preview %} (
+        <a class="a edit-me" href="{{ event.edit_link }}" target="_blank" style="{{ event.css.link }}">edit</a>)
+    {% endif %}
+
+    <div>
+        {{ event.dm_text }}
+    </div>
+
+    <div class="details" style="clear: both;">
+
+        {# Website #}
+        {% if event.website_url %}
+            More:
+            <a href="{{ event.website_url }}" style="{{ event.css.link }}" title="External link">{{ event.website_url }}</a>
+            <br>
+            <br>
+        {% endif %}
+
+        {# Venue #}
+        {% if event.venue and event.venue != 'Williams College' %}
+            <em>{{ event.venue }}{% if event.venue_room %}, {{ event.venue_room }} {% endif %}</em>
+            <br>
+        {% endif %}
+
+        {# Dates #}
+        {% if event.event_dates|length and event.type != 'announcement' %}
+            {% for event_date in event.event_dates %}
+                <strong>{{ event_date | replace({'<br>': ' @ ', '>': ''}) | raw }}</strong>
+                <br>
+            {% endfor %}
+        {% endif %}
+
+        {# Author #}
+        {% if event.author %}
+            {# email_off is to prevent Cloudflare from obfuscating the address #}
+            <!--email_off--><a class="name" style="{{ event.css.link }}" href="mailto:{{ event.author_email }}" title="Email {{ event.author }}" aria-label="Email author">{{ event.author }}</a><!--/email_off-->{% if event.ldap_department %} - <span aria-label="Department">{{ event.ldap_department }}</span>{% endif %}{% if event.orgs %}, <span aria-label="Campus organization">{{ event.orgs }}</span>{% endif %}
+            <br>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{# DM Run Dates if do_preview #}
+{% if event.do_preview %}
+    <aside class="dm-run">
+        <strong>{{ __('Daily Message Run', 'the-events-calendar') }}</strong>
+        {{ event.dm_dates | join('<br>') }}
+    </aside>
+{% endif %}

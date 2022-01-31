@@ -1,0 +1,103 @@
+<div id="tribe-events-content" class="tribe-events-single">
+
+    {% include 'modules/meta/header.twig' %}
+
+    {# Notices #}
+    {{ fn('tribe_the_notices') }}
+
+    {# '62 Center 'integrated' events #}
+    {% include 'modules/meta/ctd_integrated.twig' %}
+
+    <div id="post-{{ event.ID }}" {{ fn('post_class', 'cf', event.ID) }}>
+
+        {# Event Image #}
+        {{ event.img }}
+
+        {# Event content #}
+        {% do action('tribe_events_single_event_before_the_content') %}
+
+        <div class="tribe-events-single-event-description tribe-events-content">
+            {# .tribe-events-single-event-description #}
+            {{ event.content }}
+
+            {% if event.program_url or event.press_release_url or event.website_url or event.facebook_url %}
+			<dl>
+            {% endif %}
+            {% if event.program_url %}
+                <dt> {{ __('Event Program', 'the-events-calendar') }} </dt>
+                <dd class="tribe-events-event-url">
+                    <span class="btm bt-file"></span><a href="{{ event.program_url }}">{{ event.program_url }}</a>
+                </dd>
+            {% endif %}
+
+            {% if event.press_release_url %}
+                <dt> {{ __('Notes', 'the-events-calendar') }} </dt>
+                <dd class="tribe-events-event-url">
+                    <span class="btm bt-file"></span><a href="{{ event.press_release_url }}">{{ event.press_release_url }}</a>
+                </dd>
+            {% endif %}
+
+            {% if event.website_url %}
+                <dt> {{ __('More Information', 'the-events-calendar') }} </dt>
+                <dd class="tribe-events-event-url">
+                    <span class="btm bt-file"></span><a href="{{ event.website_url }}">{{ event.website_url }}</a>
+                </dd>
+            {% endif %}
+
+            {% if event.facebook_url %}
+                <dt> {{ __('Facebook', 'the-events-calendar') }} </dt>
+                <dd class="tribe-events-event-url">
+                    <span class="btm bt-file"></span><a href="{{ event.facebook_url }}">{{ event.facebook_url }}</a>
+                </dd>
+            {% endif %}
+            {% if event.program_url or event.press_release_url or event.website_url or event.facebook_url %}
+			</dl>
+            {% endif %}
+        </div>
+
+        {# .tribe-events-single-event-description #}
+        <aside id="event-details">
+            {% if not event.do_preview %}
+                {{ event.edit_link }}
+            {% endif %}
+
+            <h3 class="widgettitle">{{ __('Event Details') }}</h3>
+
+            {# Event meta #}
+            {% do action('tribe_events_single_event_before_the_meta') %}
+            {% include 'modules/meta.twig' with {'event': event} %}
+
+            {% if not event.do_preview %}
+                {% do action('tribe_events_single_event_after_the_content') %}
+            {% endif %}
+            {{ sidebar_message }}
+        </aside>
+
+    </div> {# #post-x #}
+
+    {% if not event.do_preview %}
+
+        {# Navigation #}
+        <h3 class="tribe-events-visuallyhidden">{{ __('%s Navigation', 'the-events-calendar') | format(event.events_label_singular) }}</h3>
+
+        <ul class="tribe-events-sub-nav">
+            <li class="tribe-events-nav-previous">
+                <span>&laquo;</span> {{ fn('tribe_the_prev_event_link', '%title%') }}
+            </li>
+            <li class="tribe-events-nav-next">{{ fn('tribe_the_next_event_link', '%title%') }}
+                <span>&raquo;</span>
+            </li>
+        </ul>
+
+        {% do action('tribe_events_single_event_after_the_meta') %}
+
+        {# Event footer #}
+        <div id="tribe-events-footer">
+
+            {# .tribe-events-sub-nav #}
+        </div>
+        {# #tribe-events-footer #}
+
+    {% endif %}
+
+</div>{# #tribe-events-content #}

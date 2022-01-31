@@ -1,0 +1,147 @@
+{
+    "key": "group_5bf2d60e9d957",
+    "title": "Event Groups",
+    "fields": [
+        {
+            "key": "field_5bf2e17fd173c",
+            "label": "Aggregate Events by Category",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Create arbitrary groups of events from any number of categories across one or more taxonomies.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5bf2d669b068f",
+            "label": "Groups",
+            "name": "aggregated_categories_group",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5bf2e222d173d",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Group",
+            "sub_fields": [
+                {
+                    "key": "field_5bf2e222d173d",
+                    "label": "Category Group Name",
+                    "name": "category_group_name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5bf2d74db0691",
+                    "label": "Event Category",
+                    "name": "event_category",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "event_category",
+                    "field_type": "multi_select",
+                    "allow_null": 0,
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "id",
+                    "multiple": 0
+                },
+                {
+                    "key": "field_5bf2e258d173e",
+                    "label": "Event Departments",
+                    "name": "event_departments",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "event_departments",
+                    "field_type": "multi_select",
+                    "allow_null": 0,
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "id",
+                    "multiple": 0
+                },
+                {
+                    "key": "field_5bf2d7e1b0693",
+                    "label": "Event Type",
+                    "name": "group_event_type",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "tribe_events_cat",
+                    "field_type": "multi_select",
+                    "allow_null": 0,
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "id",
+                    "multiple": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-category-groups"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1625168317
+}

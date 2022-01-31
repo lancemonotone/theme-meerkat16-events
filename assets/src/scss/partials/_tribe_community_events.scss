@@ -1,0 +1,414 @@
+@mixin form_label {
+  font-size: 20px;
+  text-transform: inherit;
+  font-weight: 500;
+}
+
+/**
+ * My Events listing
+ */
+.tribe_community_list .tribe-community-events-content {
+  .tribe-nav .my-events-display-options a.home-btn {
+    padding: 21px 26px;
+    color: initial;
+    margin: 3px;
+
+    &.current {
+      color: $transparent_grey;
+      pointer-events: none;
+      display: none;
+    }
+  }
+}
+
+/**
+ * Event Submission Form
+ */
+.tribe-community-events {
+  padding-top: 0 !important;
+
+  .my-events-header {
+    border: none;
+    display: block;
+    padding-bottom: 0;
+
+    .my-events {
+      margin: inherit;
+    }
+
+    .tribe-community-notice {
+      background: unset;
+      border: unset;
+      box-shadow: unset;
+      text-align: center;
+      /*.home-btn.edit-event {
+        background-color: $alert-red;
+      }*/
+      .home-btn.view-event {
+        background-color: $alert-green;
+      }
+      .home-btn.edit-event {
+        box-shadow: 0 10px 20px 0 rgba(0,0,0,0.1);
+        &:hover{
+          box-shadow: none;
+        }
+      }
+    }
+
+    .submit-nag {
+      text-align: center;
+      color: #cf432b;
+      display: block;
+    }
+  }
+
+  // Submission confirmation preview
+
+  .tribe-events-event-meta .tribe-events-meta-group {
+    width: 100%;
+    float: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /*p:empty {
+    display: none;
+  }*/
+  [id$="-preview"] {
+    aside.dm-run {
+      background-color: $grey;
+      padding: 1em;
+    }
+
+    .bodytext {
+      margin-bottom: 1em;
+      margin-top: auto !important;
+
+      div.details {
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // Visual cue for input maxlength reached
+  .add-counter {
+    input, textarea {
+      //border-color: green;
+      &.input-full {
+        border-color: red;
+      }
+    }
+
+    span.counter {
+      //color: green;
+      &.input-full {
+        color: red;
+      }
+    }
+  }
+
+  ul li {
+    font-size: 15px;
+  }
+
+  ul.expandos {
+    padding-left: 0;
+
+    li.expando {
+      a.link-anchor {
+        //top: 2px;
+        &:after {
+          color: $white;
+        }
+
+        &:hover:after {
+          color: $white;
+        }
+      }
+
+      .expando-link {
+        background-color: rgba(#9EBFC1, .93);
+        color: $white;
+
+        span {
+          @include form_label;
+        }
+
+        .dropdown-toggle:after {
+          color: $white;
+          border-color: $white;
+        }
+      }
+    }
+
+    &:not(.is-expando) {
+      li.expando {
+        &.is-active >,
+        &:hover > {
+          .link-anchor:after,
+          .expando-link {
+            color: inherit;
+          }
+        }
+      }
+    }
+  }
+
+  &.form {
+    background: transparent;
+    border: none;
+    box-sizing: border-box;
+    color: #64686c;
+
+    .tribe-events-single div[id^=post-]:after {
+      content: normal;
+    }
+  }
+
+  .initially-hidden {
+    display: none;
+
+    &.shown {
+      display: block;
+    }
+  }
+
+  .events-community-post-title,
+  .acf-input-wrap {
+    input {
+      &[type=text],
+      &[type=url] {
+        width: 100%;
+
+        &.hasDatepicker {
+          width: inherit;
+          position: relative;
+        }
+      }
+    }
+
+    &.acf-date-picker {
+      &:after {
+        font-family: "Black Tie";
+        color: $dark-grey;
+        content: '\F019';
+      }
+    }
+  }
+
+  .tribe-section {
+    .tribe-section-header {
+      h3 {
+        @include form_label;
+      }
+    }
+  }
+
+  .events-community-post-title,
+  .events-community-post-content {
+    label {
+      @include form_label;
+    }
+  }
+
+  .acf-form-fields {
+    .acf-field {
+      background: #fff;
+      border-radius: 3px;
+      border: 1px solid #e0e0e0;
+      font-size: 13px;
+      margin: 24px 0;
+      padding: 0 0 32px;
+
+      &[data-name='event_type'] {
+        border: none;
+
+        .acf-label {
+          display: none;
+        }
+
+        ul.acf-radio-list {
+          li:not(:nth-of-type(1)):not(:nth-of-type(2)) {
+            display: none;
+          }
+        }
+      }
+
+      .acf-label {
+        border-bottom: 1px solid silver;
+        //border-top: 1px solid silver;
+        margin-bottom: 32px;
+        padding: 16px;
+
+        label {
+          @include form_label;
+        }
+      }
+
+      .acf-error-message {
+        margin-left: 32px;
+        margin-right: 32px;
+      }
+
+
+      .acf-input {
+        margin-left: 32px;
+        margin-right: 32px;
+
+        .acf-error-message {
+          margin-left: 0;
+          margin-right: 0;
+        }
+
+        textarea {
+          width: 100%;
+        }
+      }
+
+      select:disabled {
+        display: none;
+      }
+    }
+  }
+
+  .acf-form {
+    // Select list dropdown (appended to page)
+    .select2-drop {
+      li {
+        font-size: 11px;
+
+        & * {
+          transition: none;
+        }
+      }
+    }
+
+    &.acf-event {
+      .acf-label {
+        //background-color: $dark_grey;
+        //color: $white;
+        label {
+          //color: $white;
+          opacity: 1;
+        }
+      }
+    }
+
+    &.acf-dm {
+      .acf-label {
+        //background-color: $gray;
+        //color: $white;
+        label {
+          //color: $white;
+          opacity: 1;
+        }
+      }
+    }
+
+    &.acf-music {
+      .acf-label {
+        background-color: lighten($orange, 0);
+        color: $white;
+
+        label {
+          color: $white;
+          opacity: 1;
+        }
+      }
+    }
+
+    &.acf-ctd {
+      .acf-label {
+        background-color: lighten($blue, 10);
+        color: $white;
+
+        label {
+          color: $white;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .acf-taxonomy-field .categorychecklist-holder {
+    border: none;
+  }
+}
+
+// end Event Submission Form
+
+.tribe-community-events .tribe-section p.description {
+  margin: 0;
+}
+
+.acf-ui-datepicker {
+  .ui-datepicker {
+    select {
+      display: inline-block;
+      padding: .2em .45em;
+      background-position: calc(100% - 15px) calc(1em - 5px), calc(100% - 10px) calc(1em - 5px), calc(100% - 2em) .2em;
+      //background-size: 7px 7px,9px 9px,1px 1.5em;
+      &.ui-datepicker-year {
+        width: 43%;
+      }
+
+      &.ui-datepicker-month {
+        width: 45%;
+      }
+    }
+
+    .ui-datepicker-title select:active,
+    .ui-datepicker-title select:focus {
+      background-position: calc(100% - 10px) calc(1em - 6px), calc(100% - 14px) calc(1em - 6px), calc(100% - 2em) .2em;
+    }
+  }
+}
+
+/*********************
+LARGER MOBILE DEVICES
+*********************/
+@media only screen and (min-width: $mobile_portrait) {
+
+}
+
+/*********************
+MOBILE WIDE
+*********************/
+@media only screen and (min-width: $mobile_landscape) {
+
+}
+
+/*********************
+TABLET & SMALL LAPTOPS
+*********************/
+@media only screen and (min-width: $tablet) {
+  .tribe-community-events {
+    [id$="-preview"] {
+      aside.dm-run {
+        float: right;
+        width: 30%;
+      }
+
+      .bodytext {
+        float: left;
+        width: 59%;
+      }
+    }
+  }
+}
+
+/*********************
+DESKTOP
+*********************/
+@media only screen and (min-width: $desktop) {
+
+}
+
+/*********************
+LARGE VIEWING SIZE
+*********************/
+@media only screen and (min-width: $desktop) {
+
+}

@@ -1,0 +1,48 @@
+{
+    "key": "group_5b7da5a7b7106",
+    "title": "'62 Center",
+    "fields": [
+        {
+            "key": "field_5b7da5fb9e60d",
+            "label": "Parent Event",
+            "name": "acf_parent_event",
+            "type": "post_object",
+            "instructions": "For '62 CTD integrated programming. Select the associated CenterSeries event.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "tribe_events"
+            ],
+            "taxonomy": [
+                "tribe_events_cat:62_center"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "tribe_events_cat:62_center"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1534982045
+}

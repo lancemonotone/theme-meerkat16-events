@@ -1,0 +1,90 @@
+{# This template is called by page-daily-messages.php #}
+
+{% extends 'base.twig' %}
+{% block content %}
+    {% set date_format_compact = 'D n/j/Y' %}
+    {% set date_format_long = 'l, F jS, Y' %}
+    {% set has_end_date = end_date > start_date %}
+    {% set show_next_day = is_admin or ( 'midnight' | date ('U') >= tomorrow | date('U') ) %}
+
+    {% set date_format = show_next_day and has_end_date ? date_format_compact : date_format_long %}
+    {% set stop_date = (end_date > start_date) and show_next_day ?  ' - ' ~ end_date | date(date_format) %}
+
+    {% set current_date = start_date | date(date_format) %}
+    {% set audience_query = audience ? '&audience=' ~ audience %}
+
+    {% set dates = '<li class="tribe-events-nav-date">' ~ current_date  ~  stop_date ~ '</li>' %}
+
+    {% if not request.post.dm_filter_form %}
+        {% set prev_link = '<li class="tribe-events-nav-previous tribe-events-nav-left tribe-events-past" aria-label="previous events link">
+                            <a href="' ~ site.link ~ '/daily-messages/?start_date=' ~ yesterday ~ audience_query ~ '" rel="prev"><span>&laquo;</span> Previous Day</a>
+                        </li><!-- .tribe-events-nav-left -->' %}
+        {% if show_next_day %}
+            {% set next_link = '<li class="tribe-events-nav-next tribe-events-nav-right" aria-label="next events link">
+                                <a href="' ~ site.link ~ '/daily-messages/?start_date=' ~ tomorrow ~ audience_query ~ '" rel="next">Next Day<span>&raquo;</span></a>
+                            </li><!-- .tribe-events-nav-right -->' %}
+        {% endif %}
+    {% endif %}
+
+    {#{{ fn('do_shortcode', '[expando title="Search Daily Messages"]' ~ filter_form ~ '[/expando]') }}#}
+
+    <div id="tribe-events-pg-template" class="tribe-events-pg-template daily-messages-list">
+        <div id="tribe-events" class="" data-live_ajax="1" data-datepicker_format="1" data-category="" data-featured="">
+            <div class="tribe-events-before-html"></div>
+            <span class="tribe-events-ajax-loading"><img class="tribe-events-spinner-medium" src="http://www.local.williams.edu/wp-content/plugins/the-events-calendar/src/resources/images/tribe-loading.gif" alt="Loading Events"></span>
+            <div id="tribe-events-content-wrapper" class="tribe-clearfix">
+                <input type="hidden" id="tribe-events-list-hash" value="">
+                <!-- Main Events Content -->
+
+                <div id="tribe-events-content" class="tribe-events-list">
+
+
+                    <!-- List Title -->
+                    <div class="title-wrapper">
+                        <h1 class="tribe-events-page-title">Daily Messages</h1>
+                    </div>
+                    <!-- Notices -->
+
+                    <!-- List Header -->
+                    <div id="tribe-events-header" class="cf" data-title="Upcoming Events – Events and Announcements" data-startofweek="0" data-view="list" data-baseurl="{{ home_url }}/events/list/" data-default-mobile-view="list" data-default-view="list">
+                        <!-- Header Navigation -->
+
+                        <h3 class="screen-reader-text">Daily Messages Navigation</h3>
+                        <ul class="tribe-events-sub-nav">
+                            <!-- Prev Navigation -->
+                            {{ prev_link }}
+
+                            {{ dates }}
+
+                            <!-- Next Navigation -->
+                            {{ next_link }}
+                        </ul>
+                    </div>
+                    <!-- #tribe-events-header -->
+
+
+                    <!-- Events Loop -->
+
+
+                    <div class="tribe-events-loop">
+
+                        <div class="cf">
+                            {# content = 'daily-messages/daily-messages-email.twig' #}
+                            {{ content }}
+                        </div>
+                    </div>
+
+                    <h3 class="screen-reader-text">Daily Messages Navigation</h3>
+                    <ul class="tribe-events-sub-nav">
+                        <!-- Prev Navigation -->
+                        {{ prev_link }}
+
+                        <!-- Next Navigation -->
+                        {{ next_link }}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

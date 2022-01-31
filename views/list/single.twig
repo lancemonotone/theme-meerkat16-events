@@ -1,0 +1,59 @@
+<div class="ribbon ribbon-top-left">
+    <span>Featured</span>
+</div>
+
+{{ image }}
+
+{% do action('tribe_events_before_the_event_title') %}
+
+<h2 class="tribe-events-list-event-title">
+    <a class="tribe-event-url" href="{{ event.event_url }}" title="{{ event.title | e('html_attr') }}" rel="bookmark">
+        {{ event.title }}
+        {% if event.private == 'yes' %}<i class="event-privacy bts bt-lock bt-sm" title="Campus-Only Event"></i>{% endif %}
+    </a>
+    {{ event.edit_link }}
+</h2>
+
+{% do action('tribe_events_after_the_event_title') %}
+
+{# Event Meta #}
+{% do action('tribe_events_before_the_meta') %}
+<div class="tribe-events-event-meta">
+    <div class="author {{ event.venue ? ' location' }}">
+
+        {# Schedule & Recurrence Details #}
+        <div class="tribe-event-schedule-details">
+            {{ fn('tribe_events_event_schedule_details', event.ID  ) }}
+        </div>
+        <div>
+            {{ event.venue and event.venue != 'Williams College'? event.venue }}
+        </div>
+    </div>
+
+    <dl>
+    {{ event.category_html }}
+    </dl>
+
+    {# Event Cost #}
+    {% if event.cost %}
+	    <dl>
+        <dt class="event-cost screen-reader-text">{{ __('Cost', 'the-events-calendar') }}</dt>
+        <dd class="tribe-events-event-cost">
+            <span class="ticket-cost">{{ event.cost }}</span>
+            {% do action('tribe_events_inside_cost') %}
+        </dd>
+    {% endif %}
+</div>{# .tribe-events-event-meta #}
+
+
+{% do action('tribe_events_after_the_meta') %}
+
+
+{# Event Content #}
+{% do action('tribe_events_before_the_content') %}
+<div class="tribe-events-list-event-description tribe-events-content description entry-summary">
+    {{ event.dm_text }}
+    <a href="{{ event.event_url }}" class="tribe-events-read-more" rel="bookmark">{{ __('Find out more', 'the-events-calendar') }} &raquo;</a>
+</div>{# .tribe-events-list-event-description #}
+
+{% do action('tribe_events_after_the_content') %}

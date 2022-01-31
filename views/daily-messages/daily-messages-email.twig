@@ -1,0 +1,145 @@
+{% set audience_query = audience ? '&audience=' ~ audience %}
+<style type="text/css">
+
+    @media screen {
+
+        body:not(.page) {
+            font-family: Arial, Helvetica Neue, 'Open Sans', sans-serif;
+        }
+
+        body:not(.page) a {
+        {{ css.a }};
+        }
+
+        body:not(.page) a:hover,
+        body:not(.page) a:active {
+            text-decoration: underline;
+        }
+
+    }
+</style>
+<table style="{{ css.tablewrap }}" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tbody>
+    <tr>
+        <td style="line-height:0;mso-line-height-rule:exactly;width:100%;" width="100%" align="center">
+            <table role="presentation" class="table full-width container" width="690px" align="center" cellspacing="0" border="0" cellpadding="5" style="{{ css.table }}">
+                <tbody>
+                <tr class="email-only">
+                    <td class="hero" style="{{ css.hero }} text-align: center;">
+                        <a class="view_online" href="{{ home_url }}/daily-messages?start-date={{ today }}{{ audience_query }}" style="{{ css.bodytext }}{{ css.view_online }}">View Email Online</a>
+                    </td>
+                </tr>
+                <tr class="email-only">
+                    <td class="hero" style="{{ css.hero }}">
+                        <img title="Williams Daily Messages" alt="Williams Daily Messages logo" src="{{ logo }}" style="{{ css.logo }}">
+                    </td>
+                </tr>
+                <tr class="email-only">
+                    <td class="datetext" style="{{ css.datetext }}">{{ start_date | date('l, F jS, Y') }} {% if end_date > start_date %} - {{ end_date | date('l, F jS, Y') }}{% endif %}</td>
+                </tr>
+
+                <tr class="email-only">
+                    <td>&nbsp;</td>
+                </tr>
+
+                {% if category_posts|length < 1 %}
+                    <tr id="{{ hash }}-dm-body">
+                        <td>
+                            <h3 class="{{ css.bodytext }} font-size: 13px;">There are no Daily Messages today.</h3>
+                        </td>
+                    </tr>
+                {% else %}
+
+                    {% set counter = 1 %}
+                    {% for category, posts in category_posts %}
+                        <tr>
+                            <td>
+                                <h3 class="heading" style="{{ css.heading }}">{{ category }}</h3>
+
+                                <ol class="ol" style="{{ css.ol }}">
+
+                                    {% for post in posts %}
+                                        <li value="{{ counter|raw }}" class="li" style="{{ css.li_top }}">{% include 'daily-messages/daily-message-toc.twig' with {'event' : post} %}</li>
+                                        {% set counter = counter + 1 %}
+                                    {% endfor %}
+
+                                </ol>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    {% set counter = 0 %}
+
+                    <tr id="{{ hash }}-dm-body">
+                        <td>
+                            <hr class="hr" style="{{ css.hr }}">
+                        </td>
+                    </tr>
+
+                    {% set counter = 1 %}
+                    {% for category, posts in category_posts %}
+                        <tr>
+                            <td>
+                                <h3 class="heading" style="{{ css.heading }}">{{ category }}</h3>
+                                <ol class="ol" style="{{ css.ol }}">
+                                    {% for post in posts %}
+                                        <li value="{{ counter|raw }}" class="li" style="{{ css.li_bottom }}">{% include 'daily-messages/daily-message-body.twig' with {'event' : post } %}</li>
+                                        {% set counter = counter + 1 %}
+                                    {% endfor %}
+
+                                </ol>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                {% endif %}
+
+                <tr>
+                    <td>
+                        <hr class="hr" style="{{ css.hr }}">
+                        ABOUT DAILY MESSAGES<br/>
+                        <small class="bodytext" style="{{ css.bodytext }}">
+                            <br/> Daily messages are posted on weekdays.<br/>
+
+                            For questions or edits on current submissions, please email:
+                            <!--email_off--><a style="{{ css.link }}" href="mailto:dailymessage@williams.edu" target="_blank">dailymessage@williams.edu</a><!--/email_off--> or x4277.<br/><br/>
+
+                            Messages are not posted on Saturday, Sunday, or college holidays.<br/><br/>
+
+                            The deadline for submitting a message is 3 p.m. on the weekday before the message is to be posted. Messages to appear in Monday's Daily
+
+                            Messages must be submitted by 3 p.m. on Friday.<br/><br/>
+
+                            To submit an announcement for Daily Messages, visit
+                            <a style="{{ css.link }}" href="{{ home_url }}/events/community/add" target="_blank" rel="noreferrer">{{ home_url }}/events/community/add</a><br/><br/>
+
+                            To see the full set of Daily Messages for all campus audiences (students, faculty, and staff), visit
+                            <a style="{{ css.link }}" href="{{ home_url }}/daily-messages" target="_blank" rel="noreferrer">{{ home_url }}/daily-messages</a><br/><br/>
+
+
+                            For password assistance call the Jesup Help Desk at x4090.<br/><br/>
+
+                            Other places you can find out about things happening on campus are:<br/><br/>
+
+                            College Calendars
+                            <a style="{{ css.link }}" href="http://events.williams.edu/" target="_blank" rel="noreferrer" data-saferedirecturl="https://www.google.com/url?q=http://events.williams.edu">http://events.williams.edu</a><br/>
+
+                            News Releases
+                            <a style="{{ css.link }}" href="http://communications.williams.edu/category/news-releases/" target="_blank" rel="noreferrer" data-saferedirecturl="https://www.google.com/url?q=http://communications.williams.edu/category/news-releases/">http://communications.williams.edu/category/news-releases/</a><br/>
+
+                            Williams Record
+                            <a style="{{ css.link }}" href="http://williamsrecord.com/" target="_blank" rel="noreferrer" data-saferedirecturl="https://www.google.com/url?q=http://williamsrecord.com/">http://williamsrecord.com/</a><br/>
+
+                            Sports Information
+                            <a style="{{ css.link }}" href="http://ephsports.williams.edu/" target="_blank" rel="noreferrer" data-saferedirecturl="https://www.google.com/url?q=http://ephsports.williams.edu/">http://ephsports.williams.edu/</a><br/><br/>
+
+                            Williams neither endorses nor opposes any political candidate or organization. The views expressed at college events involving political candidates or campaigns are solely those of the organizers and/or speakers.
+                        </small>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>

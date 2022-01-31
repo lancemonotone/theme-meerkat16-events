@@ -1,0 +1,7 @@
+{% if event.map %}
+    <div class="tribe-events-venue-map">
+        {% do action( 'tribe_events_single_meta_map_section_start' ) %}
+        {{ event.map }}
+        {% do action( 'tribe_events_single_meta_map_section_end' ) %}
+    </div>
+{% endif %}

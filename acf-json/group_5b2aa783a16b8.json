@@ -1,0 +1,43 @@
+{
+    "key": "group_5b2aa783a16b8",
+    "title": "Options",
+    "fields": [
+        {
+            "key": "field_5b2aa793325f4",
+            "label": "Hide site footer?",
+            "name": "hide_site_footer",
+            "type": "true_false",
+            "instructions": "Check this box to hide the section footer for this site only.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1529536649
+}

@@ -1,0 +1,9 @@
+<h1 class="tribe-events-single-event-title">{{ event.title }} {% if event.private == 'yes' %}<i class="event-privacy bts bt-lock bt-sm" title="Campus-Only Event"></i>{% endif %}</h1>
+
+<div class="tribe-events-schedule tribe-clearfix">
+    {{ fn('tribe_events_event_schedule_details', event.ID,'<h2>','</h2>'  ) }}
+</div>
+
+{% if not event.do_preview %}
+    {{ fn('do_shortcode', '[home_btn color="#cf432b" class="back-btn hidden" text="Back" ]') }}
+{% endif %}

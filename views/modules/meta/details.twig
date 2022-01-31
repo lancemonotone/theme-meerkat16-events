@@ -1,0 +1,48 @@
+{# Single Event Meta (Details) Template#}
+<div class="tribe-events-meta-group tribe-events-meta-group-details">
+    <dl>
+        {% if return_site %}
+            <dt>{{ __('Department', 'the-events-calendar') }}</dt>
+            <dd>
+                <a href="{{ return_site.url }}" aria-label="Sponsoring department">{{ return_site.name }}</a>
+            </dd>
+        {% endif %}
+
+        {{ event.category_html }}
+
+        {% do action('tribe_events_single_meta_details_section_start') %}
+
+        {% if event.is_dm %}
+            {% if event.dm_dates %}
+                <dt>{{ __('Daily Message Run Date', 'the-events-calendar') }}</dt>
+                <dd>{{ event.dm_dates | join('<br>') }}</dd>
+            {% endif %}
+        {% else %}
+            <dt> {{ __('Date', 'the-events-calendar') }}</dt>
+            <dd>
+                <abbr class="tribe-events-abbr tribe-events-start-date published dtstart" title="{{ event.start_ts | e('html_attr') }}">{{ event.start_date }}</abbr>
+            </dd>
+
+            <dt>{{ __('Time', 'the-events-calendar') | apply_filters('tribe_events_single_event_time_title', event.ID) }}</dt>
+            <dd>
+                <div class="tribe-events-abbr tribe-events-start-time published dtstart" title="{{ event.end_ts | e('html_attr') }}">
+                    {{ event.time_formatted | apply_filters('tribe_events_single_event_time_formatted', event.ID) }}
+                </div>
+            </dd>
+        {% endif %}
+
+        {% if event.cost %}
+            <dt>{{ __('Cost', 'the-events-calendar') }}</dt>
+            <dd>{{ event.cost | e('html_attr') }}</dd>
+        {% endif %}
+
+        {% if event.ticket_url %}
+            <dt>{{ __('Tickets', 'the-events-calendar') }}</dt>
+            <dd><a href="{{ event.ticket_url | e('html_attr') }}" target="_blank">Get Tickets</a></dd>
+        {% endif %}
+
+        {{ event.tags }}
+
+        {% do action('tribe_events_single_meta_details_section_end') %}
+    </dl>
+</div>

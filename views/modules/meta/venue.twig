@@ -1,0 +1,16 @@
+{% if event.venue %}
+
+    <div class="tribe-events-meta-group tribe-events-meta-group-venue">
+
+        <dl>
+        <dt> Venue</dt>
+            {% do action( 'tribe_events_single_meta_venue_section_start' ) %}
+
+            <dd class="tribe-venue"> {{ fn('tribe_get_venue', event.ID) }}{{ event.venue_room ? ', ' ~ event.venue_room }}</dd>
+
+            {% do action( 'tribe_events_single_meta_venue_section_end' ) %}
+
+        </dl>
+    </div>
+
+{% endif %}

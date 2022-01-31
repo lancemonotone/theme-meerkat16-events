@@ -1,0 +1,877 @@
+{
+    "key": "group_5a7221b950421",
+    "title": "Events Extra",
+    "fields": [
+        {
+            "key": "field_5a3a83647fbee",
+            "label": "Type",
+            "name": "event_type",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "events-required",
+                "id": ""
+            },
+            "choices": {
+                "announcement": "Daily Message",
+                "event": "Event (public or campus-only)",
+                "music": "Music Department",
+                "62_center": "'62 Center",
+                "grad-art": "Grad Art",
+                "sports": "Sports"
+            },
+            "allow_null": 1,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5c6716ee579a0",
+            "label": "Privacy",
+            "name": "acf_private",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "!=",
+                        "value": "announcement"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "events-required",
+                "id": ""
+            },
+            "choices": {
+                "yes": "This event is only or primarily for campus (campus only)",
+                "no": "I definitely want non-Williams people to come to this event (general public)"
+            },
+            "allow_null": 1,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5ca63ca431b74",
+            "label": "Headline",
+            "name": "acf_headline",
+            "type": "text",
+            "instructions": "<span class=\"counter\"><\/span> characters remaining.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "announcement"
+                    },
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "event"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "events-required add-counter",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 100
+        },
+        {
+            "key": "field_5ca63cb631b75",
+            "label": "Description",
+            "name": "acf_description",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "announcement"
+                    },
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "event"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "events-required",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_5a95af64cb0f6",
+            "label": "Excerpt",
+            "name": "acf_daily_message_text",
+            "type": "textarea",
+            "instructions": "This brief synopsis will appear in the calendar listing and\/or Daily Message email. If there is no excerpt, the truncated description will be used.<br><span class=\"counter\">240<\/span> characters remaining.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "add-counter",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": 240,
+            "rows": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5a85f392fb5ec",
+            "label": "Submit to Daily Messages?",
+            "name": "acf_is_dm",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Check to choose audience and publication date",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5b2e9fb1831b4",
+            "label": "Daily Message Audience",
+            "name": "acf_dm_audience",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a85f392fb5ec",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "events-required",
+                "id": ""
+            },
+            "choices": {
+                "students": "Students",
+                "faculty": "Faculty",
+                "staff": "Staff"
+            },
+            "allow_custom": 0,
+            "default_value": [
+                "students",
+                "faculty",
+                "staff"
+            ],
+            "layout": "vertical",
+            "toggle": 1,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_5b33c7547d2e7",
+            "label": "Daily Message Publication Date",
+            "name": "acf_daily_message_run_dates_0",
+            "type": "date_picker",
+            "instructions": "Choose the date for inclusion in Daily Messages. This does <em>not<\/em> affect the calendar listing date for events.\r\n<br>\r\n<ul><li>Please read the Daily Message Instructions above.<\/li>\r\n<li>Only one message per event or announcement will be accepted for the faculty and staff editions, except for critical or urgent matters (for example, messages from OIT, deans, security, dining services, and facilities). If you wish these posted more than once, please submit your request to the communications office at x4277.<\/li>\r\n<li>Daily Messages do not run on weekends.<\/li><\/ul>",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a85f392fb5ec",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y",
+            "return_format": "Ymd",
+            "first_day": 0
+        },
+        {
+            "key": "field_5b2ea1a2d3dc5",
+            "label": "Additional Publication Date for Student Edition",
+            "name": "acf_daily_message_run_dates_1",
+            "type": "date_picker",
+            "instructions": "<ul>\r\n<li>You may send two messages per event or announcement to students, if desired. Enter the second run date here.<\/li><\/ul>",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b2e9fb1831b4",
+                        "operator": "==",
+                        "value": "students"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y",
+            "return_format": "Ymd",
+            "first_day": 0
+        },
+        {
+            "key": "field_5b4f7d6186866",
+            "label": "Human Research Subject?",
+            "name": "acf_research_check",
+            "type": "true_false",
+            "instructions": "Does your message relate to a research study involving human subjects (e.g., calls for study participants)?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Yes",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5b4f7e8186867",
+            "label": "Faculty Oversight",
+            "name": "acf_research_faculty",
+            "type": "text",
+            "instructions": "Please provide the name(s) of the Williams faculty member(s) overseeing the study.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b4f7d6186866",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b4f7f9c86868",
+            "label": "Approval\/Exemption",
+            "name": "acf_research_approved",
+            "type": "radio",
+            "instructions": "Has the study been approved or exempted by the college's Institutional Review Board (IRB)? Messages about human subjects research will only be approved if the studies have been reviewed by the IRB and satisfy all other Daily Message guidelines.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b4f7d6186866",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "no": "No",
+                "yes": "Yes"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5ac7a5ec9a2d8",
+            "label": "Department",
+            "name": "acf_event_department",
+            "type": "taxonomy",
+            "instructions": "Select the department(s) which are sponsoring this event. This will allow the event to appear in the calendar widget on the department websites.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "event_departments",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5ba53b79c2874",
+            "label": "Override Author Department",
+            "name": "acf_override_author_department",
+            "type": "text",
+            "instructions": "Enter a new department name to override the author's LDAP record. This will appear exactly as entered.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 140
+        },
+        {
+            "key": "field_5ac67d48715c9",
+            "label": "Category",
+            "name": "acf_event_category",
+            "type": "taxonomy",
+            "instructions": "Choose one category that best represents your event\/announcement.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "event_category",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5ac7a6029a2d9",
+            "label": "Campus Organization",
+            "name": "acf_event_group",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "event_groups",
+            "field_type": "select",
+            "allow_null": 1,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5a78a9ddf496a",
+            "label": "More Information Link",
+            "name": "acf_external_website",
+            "type": "url",
+            "instructions": "Optional. The full link to an external website which contains more information. This link will appear in the Daily Message email and on the single-view landing page of the calendar.<br>Example: <em>https:\/\/myveryinterestingevent.com<\/em>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5ac68d61e7fa5",
+            "label": "Music Calendar Category",
+            "name": "acf_music_calendar_type",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "music"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "music_dept_cal_types",
+            "field_type": "checkbox",
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 0
+        },
+        {
+            "key": "field_5ac68da6e7fa7",
+            "label": "Music Event Type",
+            "name": "acf_music_season_type",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "music"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "music_dept_season_types",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5ac68de5e7fa8",
+            "label": "Music Event Category",
+            "name": "acf_music_event_cat",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "music"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "music_dept_cats",
+            "field_type": "checkbox",
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 0
+        },
+        {
+            "key": "field_5ac68e1ce7fa9",
+            "label": "Music Season",
+            "name": "acf_music_seasons",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "music"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "music_dept_seasons",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5ac78a5b850b1",
+            "label": "'62 Center Series Category",
+            "name": "acf_ctd_series_cats",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "62_center"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "ctd_series_cats",
+            "field_type": "radio",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5ac78a7b5b509",
+            "label": "'62 Center Season",
+            "name": "acf_ctd_seasons",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "62_center"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "ctd_seasons",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5a78a71ef4967",
+            "label": "Before Title",
+            "name": "acf_before_title",
+            "type": "text",
+            "instructions": "Very brief text which will precede the title on the event detail page.<br>Example: <em>Williams Theatre presents<\/em>",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "music"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "62_center"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 140
+        },
+        {
+            "key": "field_5a78a8abf4968",
+            "label": "After Title",
+            "name": "acf_after_title",
+            "type": "text",
+            "instructions": "Very brief text which will follow the title on the event detail page.<br>Example: <em>Directed by Edward Cornell<\/em>",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "music"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "62_center"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 140
+        },
+        {
+            "key": "field_5a832213fac2b",
+            "label": "Event Image",
+            "name": "acf_event_image",
+            "type": "image",
+            "instructions": "Square or portrait images look nice. Max width\/height 1000px.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "newsmix-uncropped-thumb",
+            "library": "uploadedTo",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5b77307d212f7",
+            "label": "Tickets URL",
+            "name": "acf_tickets_url",
+            "type": "url",
+            "instructions": "Enter full URL for ticket sales. <strong>Please note: <\/strong> this field requires the Department field to include at least one of the following: '62 Center, Music, Theatre, Dance or Studio62.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "62_center"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "music"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5a78a67ebaf84",
+            "label": "Program",
+            "name": "acf_program",
+            "type": "file",
+            "instructions": "Upload a PDF file (3MB max)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "music"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "62_center"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "uploadedTo",
+            "min_size": "",
+            "max_size": 3,
+            "mime_types": ""
+        },
+        {
+            "key": "field_5a7221cca008c",
+            "label": "Press Release",
+            "name": "acf_press_release",
+            "type": "file",
+            "instructions": "Upload a PDF file (3MB max)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "music"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5a3a83647fbee",
+                        "operator": "==",
+                        "value": "62_center"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "uploadedTo",
+            "min_size": "",
+            "max_size": 3,
+            "mime_types": "pdf"
+        },
+        {
+            "key": "field_5a78a90bf4969",
+            "label": "Facebook Event URL",
+            "name": "acf_facebook_event_url",
+            "type": "url",
+            "instructions": "The full link to the event on Facebook.<br>Example: <em>https:\/\/www.facebook.com\/events\/357684004671661\/<\/em>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5a78aa73f496b",
+            "label": "Twitter Hashtag",
+            "name": "acf_hashtag",
+            "type": "text",
+            "instructions": "Example: <em>#ephsforever<\/em>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 140
+        },
+        {
+            "key": "field_5b27b88e4ceaf",
+            "label": "Room #",
+            "name": "acf_room",
+            "type": "text",
+            "instructions": "Enter optional room number, level or specific location for venue. <em>Please note, this does not reserve the room.<\/em> To reserve, please visit <a href=\"https:\/\/roomscheduler.williams.edu\/virtualems\/\">the Williams Room Scheduler<\/a>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tribe_events"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1620054188
+}

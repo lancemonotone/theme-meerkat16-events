@@ -1,0 +1,170 @@
+{
+    "key": "group_5c474cae7fa1e",
+    "title": "Daily Messages Filter Form",
+    "fields": [
+        {
+            "key": "field_5c51ef7ba5dfe",
+            "label": "Daily Message Audience",
+            "name": "dm_filter_audience",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "audience"
+            },
+            "choices": {
+                "students": "Students",
+                "faculty": "Faculty",
+                "staff": "Staff"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_5c4b80be4ddd1",
+            "label": "Category",
+            "name": "dm_form_category",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "acf_event_category"
+            },
+            "taxonomy": "event_category",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5c474e0f58ac4",
+            "label": "Department",
+            "name": "dm_form_department",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "acf_event_department"
+            },
+            "taxonomy": "event_departments",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5c474d6258ac1",
+            "label": "Start Date",
+            "name": "dm_form_start_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "start_date"
+            },
+            "display_format": "F j, Y",
+            "return_format": "Ymd",
+            "first_day": 0
+        },
+        {
+            "key": "field_5c474dce58ac2",
+            "label": "End Date",
+            "name": "dm_form_end_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "end_date"
+            },
+            "display_format": "F j, Y",
+            "return_format": "Ymd",
+            "first_day": 0
+        },
+        {
+            "key": "field_5c474dea58ac3",
+            "label": "Search Term",
+            "name": "dm_form_search_term",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "search_term"
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5c7d4163854b8",
+            "label": "Search Term (copy)",
+            "name": "dm_form_search_term_copy",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": "search_term_copy"
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "15746"
+            },
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "781"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1551712622
+}

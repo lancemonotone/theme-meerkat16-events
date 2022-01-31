@@ -1,0 +1,53 @@
+{% set curView = 'widgets/widget-header-' ~ view ~ '.twig' %}
+{% set defaultView = 'widgets/widget-header-simple.twig' %}
+{% include([curView, defaultView]) %}
+
+<div id="masthead" class="site-banner outer-container {{ header_image ? 'has-header-img' }}" role="banner">
+    <div class="inner-container">
+        <div class="header-meta">
+            <div class="site-title-container">
+                {{breadcrumbs}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if options.covid_message %}
+<div id="emergency-container">
+    <div class=" inner-container">
+        <div style="position:relative;"><!--div added so that abs pos respects parent padding-->
+            {{ fn('wpautop', options.covid_message) }}
+        </div>
+    </div>
+</div><!-- #emergency-msg-container -->
+{% endif %}
+
+<style>
+    #emergency-container {
+        font-family: canada-type-gibson, Helvetica Neue, Open Sans, sans-serif;
+        -moz-animation: animSlideTop 1.5s 2.0s 1 ease forwards;
+        text-align: left;
+        padding-top: 1.75em;
+        margin-top: 1rem;
+        top: -140px;
+        background-color: #efefef;
+        font-size: large;
+    }
+
+    #emergency-container .inner-container {
+        padding: 0 29px 1.75em
+    }
+
+    #emergency-container p {
+        display: inline-block;
+        margin: 0;
+        font-family: canada-type-gibson, Helvetica Neue, Open Sans, sans-serif
+    }
+
+    #emergency-container p a {
+        text-shadow: -2px -2px #efefef, -2px 1px #efefef, 2px 0px #efefef, 1px 1px #efefef !important
+    }
+</style>
+
+
+

@@ -1,0 +1,56 @@
+.post-type-tribe_events {
+  background: #d8d8d8;
+  /*.row-actions {
+    .trash {
+      display: none;
+    }
+  }*/
+  #filters-wrap.postbox {
+    h3 {
+      padding-left: 3em;
+    }
+    .handlediv {
+      position: absolute;
+      left: 1em;
+      &:after {
+        content: "\F0A4";
+        font-family: "Black Tie";
+        position: absolute;
+        top: .5em;
+        font-size: initial;
+      }
+    }
+    &.closed {
+      .handlediv:after {
+        content: "\F0A5";
+      }
+    }
+  }
+  .acf-postbox {
+    [data-name="acf_headline"],
+    [data-name="acf_description"] {
+      display: none;
+    }
+  }
+  #side-sortables {
+    #daily_messagesdiv,
+    #ctddiv,
+    #tribe_events_catdiv,
+    #delete-action {
+      display: none;
+    }
+    #tribe_events_event_options {
+      p:nth-child(1) {
+        display: none;
+
+      }
+    }
+    input#save-post {
+      color: white;
+      background-color: #a00;
+    }
+  }
+  input#recurrence-description {
+    width: 100%;
+  }
+}

@@ -1,0 +1,24 @@
+.recurringinfo {
+  .tribe-event-schedule-details & {
+    display: block !important;
+  }
+  .event-is-recurring {
+    [id^="tribe-events-tooltip"] {
+      white-space: normal;
+      padding: 0;
+      margin: 0;
+      max-width: 320px;
+      background: aliceblue;
+      .tribe-events-event-body {
+        padding: .5em .5em 0;
+        margin: 0;
+        font-size: .8em;
+        color: $black-tinted;
+      }
+    }
+    .tribe-events-divider {
+      padding: .25em;
+      display: none;
+    }
+  }
+}
